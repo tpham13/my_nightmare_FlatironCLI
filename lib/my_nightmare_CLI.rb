@@ -1,6 +1,4 @@
-require "my_nightmare_CLI/version"
+#this file act as the environment require all dependencies (cli class)
 
-module MyNightmareCLI
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require "my_nightmare_CLI/version"
+require_relative './coffee/cli'
