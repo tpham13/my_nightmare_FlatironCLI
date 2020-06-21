@@ -26,36 +26,64 @@ require 'pry'
    
     def get_coffee
         get_coffee_blends
-        CoffeeBlends.all.each do |coffee_blend|
-        end     
+        CoffeeBlends.all.each do |coffee_blend| 
             page = get_page(coffee_blend.url)
-            binding.pry
-            # page.css("div.facets-item-cell-grid-details span").each do |product|
-            # page.css("div.facets-item-cell-grid-details").text #.each do |product| 
-            # page.css("div.facets-item-cell-grid-details span").children[0].text
-            page.css("div.facets-item-cell-grid-details a span").children.text
-           
-            
-                #     new_coffee = CoffeeBlends.new(coffee_blend.css("h6").next)
-                #     new_coffee.url = "https://www.philzcoffee.com" + coffee_blend.css("a").attribute("href").value
-                #     new_coffee.coffee_blends = coffee_blend
-                #     category.coffee << new_coffee
-                # end 
-                
-            # end 
-         
+            i = 0
+
+            while i < 3
+            page.css("div.facets-item-cell-grid-details").each do |product|
+
+            if coffee_blend.coffee.length < 3
+                coffee_product = page.css("div.facets-item-cell-grid-details a span").children[i]            
+                #puts coffee_product
+                new_coffee_product = Coffee.new(coffee_product)
+                new_coffee_product.url = "https://www.philzcoffee.com" + product.css("a").attribute("href").value
+                new_coffee_product.blend = coffee_blend
+                coffee_blend.coffee << new_coffee_product
+                i += 1
+            end
+            end 
+        end 
+         end 
     end 
 
-# end 
-# puts get_coffee_blends.name
-    # def get_coffee_info
+
+    def get_coffee_description(coffee)
+        
+            page = get_page(coffee.url)
+            coffee.description = page.css("div.product-details-description div").text.split(' | ')[0] + "."
+            # coffee.price = 
+            # Coffee.all.each do |description|
+            # page.css("div.product-details-full-main-content-right").each do |product|
+            #    puts product 
+            # end 
+
+        # end 
+        
+       
+    end 
+
+        get_coffee
+Coffee.all.each do |coffee|
+    get_coffee_description(coffee)
+end
+    
+
     # end 
-    
+
    
+    # Test; 
+# get_coffee
+# Coffee.all.each do |coffee|
+#     puts "Coffee name: " + coffee.name
+#     puts "Coffee url: " + coffee.url
+#     puts "Coffee blend name: " + coffee.blend.name
+#     puts "Coffee blend url: " + coffee.blend.url
+#     puts "=================================="
+# end  
 
     
 
-# end 
 #  Test code for get_coffee_blends: 
     # get_coffee_blends
     # CoffeeBlends.all.each do |coffee_blend|
@@ -63,7 +91,6 @@ require 'pry'
     # end  
 # end
  
-    # def get_coffee
     # get_coffee
     #     # get_coffee_blends
     #     CoffeeBlends.all.each do |coffee_blend|
