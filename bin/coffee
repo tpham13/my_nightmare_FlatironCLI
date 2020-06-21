@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/cli'
 
-Coffee::CLI.new.call
+# require './lib/coffee'   #
+
+# Coffee::CLI.new.call    #cli class and call on it 
