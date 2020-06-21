@@ -5,7 +5,7 @@ require_relative 'coffee_blends'
 require_relative 'coffee'
 require 'pry'
 
-# class Scraper
+class Scraper
     def get_page(url)
         page = Nokogiri::HTML(open(url))            
         
@@ -52,32 +52,36 @@ require 'pry'
        
             page = get_page(coffee.url)
             coffee.description = page.css("div.product-details-description").children[0]
-            # puts coffee.description
-            i = 0
-            while i < 3
-            coffee.description.each do |i|
-                puts i
-            # coffee.price = 
-            # Coffee.all.each do |description|
-            # page.css("div.product-details-full-main-content-right").each do |product|
-            #    puts product 
-            # end 
-            end 
+    end 
+     
+    def get_this_coffee_description(coffee_name) 
+        coffee = Coffee.find_by_name(coffee_name)
+        if !coffee.check_for_coffee_description
+            get_coffee_description(coffee)
         end 
-        end 
-        
-       
-    # end 
+    end 
+
+    def get_all_coffee_description
+        Coffee.all.each do |coffee|
+            if !coffee.check_for_coffee_description
+                get_coffee_description(coffee)
+            end
+        end
+    end 
+ 
+end 
+
+ 
     
-get_coffee
+# get_coffee
    
-Coffee.all.each do |coffee|
-     get_coffee_description(coffee)
+# Coffee.all.each do |coffee|
+#      get_coffee_description(coffee)
   
-end
+# end
     
 
-    # end 
+    
 
    
     # Test; 
