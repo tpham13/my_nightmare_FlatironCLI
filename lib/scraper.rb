@@ -8,7 +8,7 @@ require 'pry'
 # class Scraper
     def get_page(url)
         page = Nokogiri::HTML(open(url))            
-        # page
+        
     end 
 
     def get_coffee_blends       #Questions: 1. How do I get the page?  2. What values do I need from the HTML? 3. From the structure of the HTML, where are the values that I need? 4. What is the expected syntax for the .css method?
@@ -49,23 +49,31 @@ require 'pry'
 
 
     def get_coffee_description(coffee)
-        
+       
             page = get_page(coffee.url)
-            coffee.description = page.css("div.product-details-description div").text.split(' | ')[0] + "."
+            coffee.description = page.css("div.product-details-description").children[0]
+            # puts coffee.description
+            i = 0
+            while i < 3
+            coffee.description.each do |i|
+                puts i
             # coffee.price = 
             # Coffee.all.each do |description|
             # page.css("div.product-details-full-main-content-right").each do |product|
             #    puts product 
             # end 
-
-        # end 
+            end 
+        end 
+        end 
         
        
-    end 
-
-        get_coffee
+    # end 
+    
+get_coffee
+   
 Coffee.all.each do |coffee|
-    get_coffee_description(coffee)
+     get_coffee_description(coffee)
+  
 end
     
 
