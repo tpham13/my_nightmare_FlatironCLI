@@ -68,10 +68,6 @@ class Coffee_cli
         end 
     end 
 
-    def info_for_one_coffee(coffee)
-        @scraper.get_this_coffee_description(coffee)
-    end 
-
     def display_coffee_info(coffee_name)
         coffee = Coffee.find_by_name(coffee_name)
             puts " "
@@ -89,7 +85,8 @@ class Coffee_cli
             coffee = Coffee.find_by_name(description)
             #puts coffee_name.description
             if coffee != nil 
-                info_for_one_coffee(coffee.name)
+                # info_for_one_coffee(coffee.name)
+                @scraper.get_this_coffee_description(coffee.name)
                 display_coffee_info(coffee.name)
             else 
                 puts " "

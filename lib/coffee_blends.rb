@@ -2,11 +2,11 @@ require_relative "../config/environment.rb"
 
 class CoffeeBlends
 
-    attr_accessor :url, :coffee, :blend
+    attr_accessor :url, :coffee
     attr_reader :name
     @@all = []
 
-    def initialize (name)
+    def initialize(name)
         @name = name
         @coffee = []
         @@all << self 
