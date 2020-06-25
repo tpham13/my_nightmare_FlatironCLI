@@ -71,9 +71,9 @@ class Coffee_cli
     def display_description
         puts ""
         puts "What type of coffee would you like to learn about?"
-            input_2 = gets
-        description = input.split.map(&:capitalize).join(' ')
-        coffee_description = Coffee.check_for_coffee_description(input_2)
+            input = gets
+        # description = input.split.map(&:capitalize).join(' ')
+        coffee_description = Coffee.check_for_coffee_description(input)
         
         if coffee_description.length > 0 
 

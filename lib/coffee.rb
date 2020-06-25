@@ -1,6 +1,4 @@
-
-
-
+require_relative "../config/environment.rb"
 
 class Coffee
     attr_reader :name
@@ -23,11 +21,11 @@ class Coffee
     end 
 
     def check_for_coffee_description
-        self.description.length > 0 && self.pricing.length > 0 
+        self.description.length > 0
     end 
 
     def self.all_coffees_in(coffee_blend)
-        @@all.select {|coffee| coffee.blend == coffee_blend}
+        self.all.select {|coffee| coffee.blend.name == coffee_blend}        #?
     end 
 
 end 
