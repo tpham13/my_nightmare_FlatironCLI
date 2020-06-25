@@ -33,14 +33,14 @@ class Scraper
             if coffee_blend.coffee.length < 3
                 coffee_product = page.css("div.facets-item-cell-grid-details a span").children[i].text  #added .text         
                 #puts coffee_product  
-                binding.pry 
+                # binding.pry 
                 new_coffee_product = Coffee.new(coffee_product)
                 new_coffee_product.url = "https://www.philzcoffee.com" + product.css("a").attribute("href").value
                 new_coffee_product.blend = coffee_blend
                 coffee_blend.coffee << new_coffee_product
                 i += 1
             end
-            # binding.pry 
+            binding.pry 
             end 
         end 
          end 
@@ -51,7 +51,7 @@ class Scraper
        
             page = get_page(coffee.url)
            
-            coffee.description = page.css("div.product-details-description").children[0] #.text   #added .text here to see if the cli get_description method will work
+            coffee.description = page.css("div.product-details-description").children[0].text   #added .text here to see if the cli get_description method will work
             
      end 
     #  binding.pry
