@@ -51,7 +51,7 @@ class Scraper
 
     def get_coffee_description(coffee)
        page = get_page(coffee.url) 
-           coffee.description = page.css("div.product-details-description").children[0]   #added .text here to see if the cli get_description method will work
+           coffee.description = page.css("div.product-details-description").children[0].text   #added .text here to see if the cli get_description method will work
     # binding.pry    
     end 
     # binding.pry
