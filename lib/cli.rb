@@ -68,28 +68,50 @@ class Coffee_cli
         end 
     end 
 
+    def info_for_one_coffee(coffee)
+        @scraper.get_this_coffee_description(coffee)
+    end 
+
+    def display_coffee_info(coffee_name)
+        coffee = Coffee.find_by_name(coffee_name)
+            puts " "
+            puts "Here are the details for our #{coffee.name} coffee"
+            puts coffee.description
+
+    end 
+
     def display_description
         puts ""
         puts "What type of coffee would you like to learn about?"
             input = gets
-        # description = input.split.map(&:capitalize).join(' ')
-        coffee_description = Coffee.check_for_coffee_description(input)
-        
-        if coffee_description.length > 0 
+            description = input.split.map(&:capitalize).join(' ')
+            # coffee = Coffee.all.find{|coffee| coffee.name == description}     #match user type to string
+            coffee = Coffee.find_by_name(description)
+            #puts coffee_name.description
+            if coffee != nil 
+                info_for_one_coffee(coffee.name)
+                display_coffee_info(coffee.name)
+            else 
+                puts " "
+                puts "Bummer! It looks like that isn't a valid coffee name."
+                puts " "
+            end     
+    
+        #$coffee_description = Coffee.check_for_coffee_description(coffee_name)
+       
+        # if coffee.length > 0 
 
-            puts "#{coffee_description}"
-            cofffee_description.each_with_index do |description, index|
-                puts "#{index+1}. #{description.name}"
-            end 
-        end 
+            # puts "#{coffee}"
+            # cofffee.each_with_index do |description, index|
+            #     puts "#{index+1}. #{description.name}"
+            # end 
+            
     end 
+        
+    
 
 end 
      
-
-
-
-
 
 
 
