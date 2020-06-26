@@ -14,23 +14,25 @@ class Coffee_cli
         puts "Please wait while the app is loading..."
         puts ""
         
-        display_coffee_blends
-        display_coffee
+        display_blends
+        display_coffees
         display_description
     end    
     
     def initialize  
-        self.scrape_for_coffee   
-    end 
-
-    def scrape_for_coffee
-        puts ""
         @scraper = Scraper.new
         @scraper.get_coffee
-        # @scraper.get_coffee_blends 
+    end 
+    
+    def titleize(word)
+        nocaps = ["the", "of"]
+        # title = word.split.map(&:capitalize).join(' ')
+        # title = input.split(" ").map { |word| nocaps.include?(word) ? word : word.capitalize }.join(" ")
+        title = word.split(" ").map { |word| nocaps.include?(word) ? word : word.capitalize }.join(" ")
+        title
     end
-
-    def display_coffee_blends      
+    
+    def display_blends      
         puts "Here are all of Philz Coffee available blends:"
         puts ""
     
@@ -40,16 +42,15 @@ class Coffee_cli
         end  
     end
  
-
-    def display_coffee   
+    
+    def display_coffees   #refactor: 2 methods--> 1. get user choice, 2. display coffee using the choice
         
         puts ""
         puts "Please type the blend that you're interested in and press 'Enter' if you want to see the coffees available for that blend."
         puts ""
-        # puts "If you are done using the Coffee app, type Exit and press Enter."
 
-        input = gets
-        blend = input.split.map(&:capitalize).join(' ')
+        input = gets.chomp
+        blend = titleize(input)
         puts ""
         blend_coffees = Coffee.all_coffees_in(blend)
         
@@ -62,8 +63,8 @@ class Coffee_cli
          
         else
             puts "Sorry that doesn't appear to be a valid blend..."
-            display_coffee_blends
-            display_coffee
+            display_blends
+            display_coffees
 
         end 
     end 
@@ -75,7 +76,7 @@ class Coffee_cli
             puts coffee.description
     end 
 
-    def display_description
+    def display_description             #refactor: 1. user choice  2.
         input = nil
         until input == 'Back' || input == 'back'
             puts ""
@@ -83,9 +84,8 @@ class Coffee_cli
             puts "Type the name of the coffee to get its description or type 'Back' to go to the previous page"
             puts ""
 
-            input = gets.chomp
-            nocaps = ["the", "of"]
-            description = input.split(" ").map { |word| nocaps.include?(word) ? word : word.capitalize }.join(" ")
+            input = gets.chomp 
+            description = titleize(input)
             coffee = Coffee.find_by_name(description)
 
             if coffee != nil 
@@ -101,7 +101,7 @@ class Coffee_cli
                         call
                     elsif input == "Exit" || input == "exit"
                         puts "goodbye"
-                        abort
+                        exit 
                     else
                         puts "please try again"
                     end 
@@ -113,11 +113,11 @@ class Coffee_cli
             else 
                 puts "Please try again"
            
-            end
+            end 
         end    
-
-    end 
         
+    end 
+       
 end 
      
 
