@@ -26,8 +26,6 @@ class Coffee_cli
     
     def titleize(word)
         nocaps = ["the", "of"]
-        # title = word.split.map(&:capitalize).join(' ')
-        # title = input.split(" ").map { |word| nocaps.include?(word) ? word : word.capitalize }.join(" ")
         title = word.split(" ").map { |word| nocaps.include?(word) ? word : word.capitalize }.join(" ")
         title
     end
@@ -38,25 +36,27 @@ class Coffee_cli
     
         CoffeeBlends.all.each_with_index do |blend, index|      
             puts "  #{index+1}. #{blend.name}"
-            
         end  
     end
  
-    
-    def display_coffees   #refactor: 2 methods--> 1. get user choice, 2. display coffee using the choice
+    def user_choice_for_blend
         
         puts ""
         puts "Please type the blend that you're interested in and press 'Enter' if you want to see the coffees available for that blend."
         puts ""
-
         input = gets.chomp
         blend = titleize(input)
-        puts ""
-        blend_coffees = Coffee.all_coffees_in(blend)
+            
+    end 
+
+    def display_coffees   #refactor: 2 methods--> 1. get user choice, 2. display coffee using the choice
         
-        if blend_coffees.length > 0         #if there are coffee under this blend then:
+        choice = user_choice_for_blend
+        blend_coffees = Coffee.all_coffees_in(choice)
+        
+        if blend_coffees.length > 0         
        
-            puts "Here are all of our products for #{blend}: "
+            puts "Here are all of our products for #{choice}: "
             blend_coffees.each_with_index do |coffee, index|
                 puts "#{index+1}. #{coffee.name}"
             end 
