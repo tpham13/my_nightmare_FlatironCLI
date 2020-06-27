@@ -23,16 +23,16 @@ class Scraper
 
     
    
-    def get_coffee
+    def get_coffee                  
         get_coffee_blends
         CoffeeBlends.all.each do |coffee_blend| 
             page = get_page(coffee_blend.url)
             i = 0
 
-            while i < 3
-            page.css("div.facets-item-cell-grid-details").each do |product|
+            while i < 3                 
+            page.css("div.facets-item-cell-grid-details").each do |product|         #how many nodes is each iterating over here? the while loop here could be making
 
-            if coffee_blend.coffee.length < 3
+            if coffee_blend.coffee.length < 3           #look into getting all coffee under each blend; there are two conditionals that are checking the same type of things here 
                 coffee_product = page.css("div.facets-item-cell-grid-details a span").children[i].text  #added .text for coffee_product to work         
                 # binding.pry 
                 new_coffee_product = Coffee.new(coffee_product)

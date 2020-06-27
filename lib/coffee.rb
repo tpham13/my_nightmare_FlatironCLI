@@ -25,7 +25,7 @@ class Coffee
     end 
 
     def self.all_coffees_in(coffee_blend)
-        self.all.select {|coffee| coffee.blend.name == coffee_blend}        #?
+        self.all.select {|coffee| coffee.blend.name == coffee_blend}        
     end 
 
 end 
