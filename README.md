@@ -1,8 +1,8 @@
 # MyNightmareCLI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/my_nightmare_CLI`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Coffee CLI App was built in ruby as a project for Flatiron School. 
+This project required scraping a website for some basic information. Philz Coffee website was used: https://www.philzcoffee.com/shop.
+This Coffee CLI App will allow you to learn more about the coffee products that Philz Coffee offers. 
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+At the start up of the page, you will see a list of blends Philz Coffee provides. From there, it will take you to different coffees that are availables for a specific blend. If you are interested in more information for each coffee, the app will prompt for your input/choice before displaying the coffee description. 
 
 ## Development
 

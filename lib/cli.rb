@@ -47,6 +47,7 @@ class Coffee_cli
         
         input = user_choice
         puts ""
+        
         blend_coffees = Coffee.all_coffees_in(input)
         
         if blend_coffees.length > 0         

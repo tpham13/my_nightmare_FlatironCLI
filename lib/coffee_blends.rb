@@ -16,9 +16,9 @@ class CoffeeBlends
         @@all
     end 
 
-
     def self.check_for_coffee_blends(coffee_blends)
         self.all.detect {|x| x.name == coffee_blends}
     end 
+    
 end 
 
