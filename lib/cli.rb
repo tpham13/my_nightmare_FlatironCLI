@@ -1,5 +1,3 @@
-#CLI Controller 
-
 require_relative "../config/environment.rb"
 
 class Coffee_cli
@@ -38,7 +36,8 @@ class Coffee_cli
  
     def user_choice
         input = gets.chomp
-        choice = titleize(input)        
+        choice = titleize(input)    
+
     end 
 
     def display_coffees  
@@ -74,7 +73,7 @@ class Coffee_cli
             coffee = Coffee.find_by_name(input)
 
             if coffee != nil 
-                @scraper.get_this_coffee_description(coffee.name)
+                @scraper.get_this_coffee_description(input)
                 puts "\nHere are the details for our #{coffee.name} coffee:"
                 puts coffee.description
 
@@ -109,6 +108,17 @@ class Coffee_cli
        
 end 
      
+
+
+
+
+
+
+
+
+
+
+
 
 
 
