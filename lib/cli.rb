@@ -1,8 +1,8 @@
 require_relative "../config/environment.rb"
 
 class Coffee_cli
-    attr_accessor :scraper, :blend
-    attr_reader :name
+    
+    attr_accessor :scraper
     
     def call
 
