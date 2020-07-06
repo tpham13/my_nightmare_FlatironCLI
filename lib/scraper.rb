@@ -10,7 +10,7 @@ class Scraper
         page = get_page("https://www.philzcoffee.com/shop")         
         page.css("div.span4.cat-row").each do |coffee_blend|  
            
-            if CoffeeBlends.all.length <3
+            if CoffeeBlends.all.length < 3
             coffee_blend_name = coffee_blend.css("span").children[0].text
             coffee_blend_url = coffee_blend.css("a").attribute("href").value 
             new_coffee_blend = CoffeeBlends.new(coffee_blend_name)          

@@ -2,8 +2,6 @@ require_relative "../config/environment.rb"
 
 class Coffee_cli
     
-    attr_accessor :scraper
-    
     def call
 
         puts "\n ========================================================================================== \n\n"
