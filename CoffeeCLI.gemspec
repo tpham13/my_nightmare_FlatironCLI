@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "my_nightmare_CLI/version"
+require "CoffeeCLI/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "my_nightmare_CLI"
-  spec.version       = MyNightmareCLI::VERSION
+  spec.name          = "CoffeeCLI"
+  spec.version       = CoffeeCLI::VERSION
   spec.authors       = ["tpham13"]
   spec.email         = ["tpham0123@gmail.com"]
 
