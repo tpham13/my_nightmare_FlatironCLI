@@ -1,4 +1,4 @@
-# MyNightmareCLI
+# CoffeeCLI
 
 This Coffee CLI App was built in ruby as a project for Flatiron School. 
 This project required scraping a website for some basic information. Philz Coffee website was used: https://www.philzcoffee.com/shop.
@@ -9,7 +9,7 @@ This Coffee CLI App will allow you to learn more about the coffee products that 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'my_nightmare_CLI'
+gem 'CoffeeCLI'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install my_nightmare_CLI
+    $ gem install CoffeeCLI
 
 ## Usage
 

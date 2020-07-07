@@ -30,7 +30,7 @@ class Scraper
                     new_coffee_product = Coffee.new(coffee_product)
                     new_coffee_product.url = "https://www.philzcoffee.com" + product.css("a").attribute("href").value
                     new_coffee_product.blend = coffee_blend
-                    coffee_blend.coffee << new_coffee_product
+                    coffee_blend.coffees << new_coffee_product
                     i += 1 
             end 
         end      
