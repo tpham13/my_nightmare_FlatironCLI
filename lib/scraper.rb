@@ -1,5 +1,3 @@
-require_relative "../config/environment.rb"
-
 class Scraper
 
     def get_page(url)
@@ -7,16 +5,17 @@ class Scraper
     end 
     
     def get_coffee_blends       
-        page = get_page("https://www.philzcoffee.com/shop")         
-        page.css("div.span4.cat-row").each do |coffee_blend|  
-           
-            if CoffeeBlends.all.length < 3
+        page = get_page("https://www.philzcoffee.com/shop")     
+
+        variable =  page.css("div.span4.cat-row").first(3).map do |coffee_blend|  
+       
             coffee_blend_name = coffee_blend.css("span").children[0].text
             coffee_blend_url = coffee_blend.css("a").attribute("href").value 
             new_coffee_blend = CoffeeBlends.new(coffee_blend_name)          
             new_coffee_blend.url = "https://www.philzcoffee.com#{coffee_blend_url}"
-            end         
-        end     
+            new_coffee_blend
+                        
+        end        
     end 
 
     def get_coffee                  

@@ -1,5 +1,3 @@
-require_relative "../config/environment.rb"
-
 class Coffee
     attr_reader :name
     attr_accessor   :url, :description, :blend

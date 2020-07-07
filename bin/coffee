@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 require_relative '../config/environment'   
 
-Coffee_cli.new.call    #cli class and call on it 
+Coffee_cli.new.call    

@@ -1,5 +1,3 @@
-require_relative "../config/environment.rb"
-
 class Coffee_cli
     
     def call
