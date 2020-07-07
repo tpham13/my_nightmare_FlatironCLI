@@ -1,12 +1,12 @@
 class CoffeeBlends
 
-    attr_accessor :url, :coffee
+    attr_accessor :url, :coffees
     attr_reader :name
     @@all = []
 
     def initialize(name)
         @name = name
-        @coffee = []
+        @coffees = []
         @@all << self 
     end 
 
